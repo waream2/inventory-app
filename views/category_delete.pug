@@ -1,0 +1,30 @@
+extends layout
+
+block content
+
+
+  h1  #{category.name}
+  p= author.lifespan
+
+  if category_products.length
+
+    p #[strong Remove the following products before attempting to delete this category.]
+
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 Products
+
+      dl
+      each item in category_products
+        dt
+          a(href=book.url) #{book.title}
+        dd #{book.summary}
+
+  else
+    p Do you really want to delete this Author?
+
+    form(method='POST' action='')
+      div.form-group
+        input#authorid.form-control(type='hidden',name='authorid', required='true', value=author._id )
+
+      button.btn.btn-primary(type='submit') Delete

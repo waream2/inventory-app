@@ -1,0 +1,25 @@
+{
+  "name": "inventory-app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "nodemon": "DEBUG=inventory-app:* npm start",
+    "tailwind:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css"
+  },
+  "dependencies": {
+    "async": "^3.2.2",
+    "autoprefixer": "^10.4.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-validator": "^6.13.0",
+    "http-errors": "~1.6.3",
+    "mongoose": "^6.0.12",
+    "morgan": "~1.9.1",
+    "postcss": "^8.3.11",
+    "postcss-cli": "^9.0.2",
+    "pug": "2.0.0-beta11",
+    "tailwindcss": "^2.2.19"
+  }
+}

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+ h1= category.name
+ hr
+ h4= category.description
+
+  ul(style="list-group" class=" tw-list-none tw-pl-0 tw-mt-10")
+    each item in inventory
+      div(class="")
+        div(class='card tw-mb-3 tw-p-5' style="width: 18rem;")
+          li
+            a(href=item.url) #{item.name}
+            p= item.description
+            if item.inStock
+              h4.text-success Available
+            else
+              h4.text-danger Not Available
+            //- input.checkbox-input(type='checkbox', name='genre', id=item._id, value=item._id, checked=item.inStock)
+    else
+      li There are no products in this category.
+  a(class='button', href=category.url + '/delete') Delete Category

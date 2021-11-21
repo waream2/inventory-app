@@ -1,0 +1,19 @@
+extends layout
+
+block content
+
+  h1  Add a category
+  h4  This should not be used often as there aren&apos;t many more categories
+  form(class="tw-flex tw-flex-col tw-w-1/4" action="", method="post")
+    label(for='name') Category Name
+    input#name(type='text' name="name" required='true')
+    br
+    label(for='description') Description
+    input#description(type='textarea' class='tw-h-20 tw-pt-0 tw-pl-0 tw-overflow-x-hidden tw-text-left' name="description" )
+    br
+    input(type="submit" class="tw-w-1/4")
+
+  if errors
+    ul(class="text-danger tw-list-none tw-pl-0 tw-pt-2")
+      for error in errors
+        li!= error.msg
