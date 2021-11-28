@@ -1,0 +1,27 @@
+extends layout
+
+block content
+
+ h1 Full Inventory
+ hr
+ h4 Here is a list of all the current available inventory
+
+  div(class="tw-w-3/4")
+    ul(style="list-group" class=" tw-list-none tw-pl-0 tw-mt-10 tw-mr-5 tw-grid tw-grid-cols-3")
+      each item in inventory
+
+          div(class='card tw-mb-3 tw-p-5 tw-mr-5 ' )
+            li
+              a(href=item.url) #{item.name}
+              p= item.description
+              p= item.category.name
+              if item.inStock
+                h4.text-success Available
+              else
+                h4.text-danger Not Available
+              //- input.checkbox-input(type='checkbox', name='genre', id=item._id, value=item._id, checked=item.inStock)
+
+      else
+        li There are no products in this category.
+
+ a(href="/category/product/add") Add Product

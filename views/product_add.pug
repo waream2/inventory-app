@@ -1,0 +1,44 @@
+extend layout
+
+block content
+
+
+  h1 Add A Product
+  hr
+  h4 Use this form to add or update a product.
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') Name:
+      input#name.form-control(type='text' placeholder='Product Name' name='name' required='true' value=(undefined===product ? '' : product.name) )
+      label(for='description') Description:
+      input#description.form-control(type='textarea' class='tw-h-20 tw-pt-0 tw-pl-0 tw-overflow-x-hidden tw-text-left' placeholder='Product Description' name='description' required='true' value=(undefined===product ? '' : product.description))
+
+    div.form-group
+      label(for='category') Category:
+      select#category.form-control(name='category' selected= value=(undefined===product ? '' : product.category.name))
+        each category in categories
+          if (typeof(product === undefined))
+            option(value=category._id) #{category.name}
+
+          else
+             option(value=category._id selected=(product.category.name === category.name)) #{category.name}
+
+
+      label(for='price') Price:
+      input#price.form-control(type='number' name='price' placeholder='$-'   value=(undefined===product? '' : product.price))
+
+      div(class="tw-flex tw-flex-col ")
+        label(for='inStock') In Stock:
+        if (typeof(product === undefined))
+          input#inStock(type='checkbox' class="tw-w-5 tw-h-5" name='inStock')
+        else
+          input#inStock(type='checkbox' class="tw-w-5 tw-h-5" name='inStock' checked=(product.inStock))
+
+    button.btn.btn-primary(type='submit') Submit
+
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

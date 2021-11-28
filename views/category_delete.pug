@@ -4,7 +4,6 @@ block content
 
 
   h1  #{category.name}
-  p= author.lifespan
 
   if category_products.length
 
@@ -17,14 +16,13 @@ block content
       dl
       each item in category_products
         dt
-          a(href=book.url) #{book.title}
-        dd #{book.summary}
+          a(href=item.url) #{item.name}
 
   else
-    p Do you really want to delete this Author?
+    p Do you really want to delete this Category?
 
     form(method='POST' action='')
       div.form-group
-        input#authorid.form-control(type='hidden',name='authorid', required='true', value=author._id )
+        input#categoryid.form-control(type='hidden',name='categoryid', required='true', value=category._id )
 
       button.btn.btn-primary(type='submit') Delete

@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+  h1= title
+  hr
+  h4 Here are all the current categories for Teslas
+
+    div(class="tw-w-3/4")
+      ul(style="list-group" class=" tw-list-none tw-pl-0 tw-mt-10 tw-mr-5 tw-grid tw-grid-cols-3")
+          each category in category_list
+            div(class='card tw-mb-3 tw-p-5 tw-mr-5 ' )
+              li
+                a(href=category.url) #{category.name}s
+                p= category.description
+
+
+          else
+            li There are no categories in inventory. Something when wrong.
+  div(class="tw-flex tw-flex-col")
+    a(class='button', href="/category/new/") Add Category

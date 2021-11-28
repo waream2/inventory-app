@@ -1,10 +1,8 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
 
-var categoryController = require('../controllers/categoryController')
-var productController = require('../controllers/productController');
-const category = require('../models/category');
-
+const router = express.Router();
+const categoryController = require('../controllers/categoryController');
+const productController = require('../controllers/productController');
 
 router.get('/', categoryController.category_list);
 
@@ -14,12 +12,28 @@ router.post('/new/', categoryController.add_category_post);
 
 router.get('/product/all/', productController.product_list);
 
-router.get('/:id/delete', categoryController.delete_category_get)
+router.get('/product/add', productController.product_add_get);
 
-// router.post('delete/' categoryController.delete_category_post)
+router.get('/:id/delete/', categoryController.delete_category_get);
+
+router.post('/:id/delete/', categoryController.delete_category_post);
+
+router.get('/:id/update/', categoryController.update_category_get);
+
+router.post('/:id/update/', categoryController.update_category_post);
+
+router.get('/product/:id/', productController.product_view);
+
+router.get('/product/:id/delete', productController.product_delete_get);
+
+router.post('/product/:id/delete', productController.product_delete_post);
+
+router.post('/product/add', productController.product_add_post);
+
+router.get('/product/:id/update', productController.product_update_get);
+
+router.post('/product/:id/update', productController.product_update_post);
 
 router.get('/:id', categoryController.category_list_inventory);
-
-
 
 module.exports = router;

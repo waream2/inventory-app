@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+  h1= title
+  hr
+  h4= subHead
+  form(class="tw-flex tw-flex-col tw-w-1/4" action="", method="post")
+    div.form-group
+      label(for='name') Category Name
+      input#name.form-control(type='text' name="name" required='true' value=(undefined===category ? '' : category.name))
+      br
+      label(for='description') Description
+      input#description.form-control(type='textarea' class='tw-h-20 tw-pt-0 tw-pl-0 tw-overflow-x-hidden tw-text-left' name="description" value=(undefined===category ? '' : category.description) )
+      br
+      input.btn.btn-primary(type="submit" class="tw-w-1/4")
+
+  if errors
+    ul(class="text-danger tw-list-none tw-pl-0 tw-pt-2")
+      for error in errors
+        li!= error.msg
