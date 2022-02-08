@@ -4,16 +4,20 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const categoriesRouter = require('./routes/category');
 
 const app = express();
+require('dotenv').config();
+
+const DB_USER = process.env.DATABASE_NAME;
+const DB_KEY = process.env.DATABASE_KEY;
 
 // Set up mongoose connection
-const mongoose = require('mongoose');
 
-const dev_db_url = 'mongodb+srv://waream2:zxcxz@cluster0.egnm9.mongodb.net/test';
+const dev_db_url = `mongodb+srv://${DB_USER}:${DB_KEY}@cluster0.egnm9.mongodb.net/test`;
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
